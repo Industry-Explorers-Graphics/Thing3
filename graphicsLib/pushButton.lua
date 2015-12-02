@@ -11,14 +11,13 @@ local PushButton_mt = {
 
 -- need to implement children.length
 function PushButton.new( self, x, y, children, state )
-    children = children or {} 
+    
     local obj = {
         x = x;
         y = y;
         height = 30;
-        children = children;
-        --width = children.length[1] or 60;
-        width = 60;
+        children = children or {}; 
+        width = children[1].length or 60;
         state = 0;
     }
     setmetatable( obj, PushButton_mt )

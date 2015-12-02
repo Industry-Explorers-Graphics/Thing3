@@ -46,7 +46,7 @@ function DrawingContext.rectBorder( self, x, y, awidth, aheight, value )
 end
 
 function DrawingContext.text( self, x, y, text, value )
-    render.drawText( self.fb, x, y, text,ffi.cast("pixel", value) );
+    render.drawText( self.fb, x, y, text, ffi.cast("pixel", value) );
 end
 
 function DrawingContext.circleFill( self, x, y, radius, value )

@@ -3,7 +3,6 @@ local ffi = require( "ffi" )
 local drawLib = require( "render_ffi" )
 local lbl = require( "label" )
 local colors = require( "colors" )
-local ppm = require( "ppm" )
 local boundingbox = require("boundingbox")
 
 local width = 340;
@@ -22,4 +21,3 @@ bbox = boundingbox:new(50, 50, 2, 2, colors.PINK, {
 bbox:draw(fb)
 
 
-ppm.write_PPM_binary( "testText.ppm", fb.data, fb.width, fb.height, 4*width )
