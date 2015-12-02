@@ -1,5 +1,5 @@
 local ffi = require("ffi")
-local render = require("render_ffi")
+local render = require("graphicsLib.render_ffi")
 
 local DrawingContext = {}
 setmetatable(DrawingContext, {

@@ -1,7 +1,7 @@
 #!/usr/bin/env luajit
 
 --guiapp2.lua
-package.path = package.path..";../?.lua"
+package.path = package.path..";./graphicsLib/?.lua"
 
 
 --[[

@@ -1,15 +1,16 @@
 #!/usr/bin/env luajit
 
 --cpuApp.lua
-package.path = package.path..";../?.lua"
+--a way to do explit path finding
+package.path = package.path..";../?.lua;graphicsLib/?.lua;lj2core/?.lua;procfs/?.lua;x11/?.lua"
 
 
 --[[
 	Test using the GuiApp concept, whereby the interactor
 	is a pluggable component.
 --]]
-local gap = require("GuiApp")
-local colors = require("colors")
+local gap = require("graphicsLib.GuiApp")
+local colors = require("graphicsLib.colors")
 
 local awidth = 640;
 local aheight = 480;

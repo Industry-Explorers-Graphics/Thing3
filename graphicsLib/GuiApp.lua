@@ -1,15 +1,13 @@
 -- GuiApp.lua
 
-package.path = package.path..";../?.lua"
-
 local ffi = require("ffi")
 local bit = require("bit")
 local bor = bit.bor
 local band = bit.band
 
-local kernel = require("kernel")
-local X11Interactor = require("X11Interactor")
-local DrawingContext = require("DrawingContext")
+local kernel = require("lj2core.kernel")
+local X11Interactor = require("graphicsLib.X11Interactor")
+local DrawingContext = require("graphicsLib.DrawingContext")
 
 
 -- some global variables
