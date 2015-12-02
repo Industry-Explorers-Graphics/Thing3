@@ -1,5 +1,5 @@
 --label.lua
-local drawLib = require("render_ffi")
+local drawLib = require("graphicsLib.render_ffi")
 
 local Label = {}
 local Label_mt = {

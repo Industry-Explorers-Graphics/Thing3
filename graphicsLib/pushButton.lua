@@ -1,8 +1,8 @@
 --pushButton.lua
 local ffi = require( "ffi" )
-local drawLib = require( "render_ffi" );
-local colors = require( "colors" );
-local dc = require( "DrawingContext" );
+local drawLib = require( "graphicsLib.render_ffi" );
+local colors = require( "graphicsLib.colors" );
+local dc = require( "graphicsLib.DrawingContext" );
 
 local PushButton = {}
 local PushButton_mt = {
