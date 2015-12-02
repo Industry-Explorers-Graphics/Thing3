@@ -1,6 +1,4 @@
 --label.lua
-local drawLib = require("render_ffi")
-
 local Label = {}
 local Label_mt = {
   __index = Label;

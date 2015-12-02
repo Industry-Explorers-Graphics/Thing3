@@ -1,10 +1,10 @@
 --drawLabel.lua
 local ffi = require( "ffi" )
-local drawLib = require( "render_ffi" )
-local lbl = require( "label" )
-local colors = require( "colors" )
-local ppm = require( "ppm" )
-local boundingbox = require("boundingbox")
+local drawLib = require( "graphicsLib.render_ffi" )
+local lbl = require( "graphicsLib.label" )
+local colors = require( "graphicsLib.colors" )
+local ppm = require( "graphicsLib.ppm" )
+local boundingbox = require("graphicsLib.boundingbox")
 
 local width = 340;
 local height = 100;
