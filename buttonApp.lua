@@ -8,11 +8,11 @@ package.path = package.path..";../?.lua"
 	Test using the GuiApp concept, whereby the interactor
 	is a pluggable component.
 --]]
-local gap = require("GuiApp")
-local colors = require("colors")
-local pushButton = require("pushButton")
-local label = require("label")
-local button = pushButton:new( 10, 30,{ label:new( 10, 30, "NEXT", colors.WHITE ) }, 0 )
+local gap = require("graphicsLib.GuiApp")
+local colors = require("graphicsLib.colors")
+local pushButton = require("graphicsLib.pushButton")
+local label = require("graphicsLib.label")
+local button = pushButton:new( 10, 30,{ label:new( 0, 0, "NEXT", colors.WHITE ) }, 0 )
 
 local awidth = 640;
 local aheight = 480;

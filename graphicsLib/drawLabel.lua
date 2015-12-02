@@ -1,10 +1,9 @@
 --drawLabel.lua
 local ffi = require( "ffi" )
-local drawLib = require( "graphicsLib.render_ffi" )
-local lbl = require( "graphicsLib.label" )
-local colors = require( "graphicsLib.colors" )
-local ppm = require( "graphicsLib.ppm" )
-local boundingbox = require("graphicsLib.boundingbox")
+local drawLib = require( "render_ffi" )
+local lbl = require( "label" )
+local colors = require( "colors" )
+local boundingbox = require("boundingbox")
 
 local width = 340;
 local height = 100;
@@ -22,4 +21,3 @@ bbox = boundingbox:new(50, 50, 2, 2, colors.PINK, {
 bbox:draw(fb)
 
 
-ppm.write_PPM_binary( "testText.ppm", fb.data, fb.width, fb.height, 4*width )
