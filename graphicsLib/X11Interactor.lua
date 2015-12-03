@@ -13,7 +13,7 @@ local band, bor = bit.band, bit.bor
 
 local X11 = require("x11.X11")
 local LXImage = require("x11.LXImage")
-local DrawingContext = require("DrawingContext")
+local DrawingContext = require("graphicsLib.DrawingContext")
 
 
 
