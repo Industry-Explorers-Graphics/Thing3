@@ -24,7 +24,7 @@ function DrawingContext.init(self, fb, data)
 end
 
 function DrawingContext.new(self, width, height, data)
-    local fb = render.createFrameBuffer( width, height, 0, 0, data, width ) 
+    local fb = render.createFrameBuffer( 0, 0, width, height, data, width ) 
 	return self:init(fb, data)
 end
 
@@ -34,7 +34,7 @@ function DrawingContext.setPixel(self, x, y, value)
 end
 
 function DrawingContext.hline(self, x, y, length, value)
-	render.drawHorizontalLine( self.fb, length, x, y, ffi.cast("pixel",value) );
+	render.drawHorizontalLine( self.fb, x, y, length, ffi.cast("pixel",value) );
 end
 
 function DrawingContext.rect(self, x, y, awidth, aheight, value)

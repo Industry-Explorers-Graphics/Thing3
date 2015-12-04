@@ -7,12 +7,12 @@ local BoundingBox_mt = {
   __index = BoundingBox;
 }
 
-function BoundingBox.new(self, length, width, x, y, color, children)
+function BoundingBox.new(self, x, y, width, height, color, children)
   local obj = {
-    length = length;
-    width = width;
     x = x;
     y = y;
+    length = length;
+    width = width;
     color = color;
     children = children;
   }
@@ -21,7 +21,7 @@ function BoundingBox.new(self, length, width, x, y, color, children)
 end
 
 function BoundingBox.draw(self, fb)
-  drawLib.drawRectFrame(fb, self.length, self.width, self.x, self.y, self.color) 
+  drawLib.drawRectFrame(fb, self.x, self.y, self.width, self.length, self.color) 
   if self.children ~= nil then 
     for _,child in ipairs(self.children) do
       child:draw(fb)
