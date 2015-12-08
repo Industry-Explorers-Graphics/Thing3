@@ -1,8 +1,8 @@
 #!/usr/bin/env luajit
 
 --cpuApp.lua
---a way to do explit path finding
-package.path = package.path..";../?.lua;graphicsLib/?.lua;lj2core/?.lua;procfs/?.lua;x11/?.lua"
+--a way to do explicit path finding
+package.path = "../?.lua;"..package.path;
 
 
 --[[
@@ -11,9 +11,29 @@ package.path = package.path..";../?.lua;graphicsLib/?.lua;lj2core/?.lua;procfs/?
 --]]
 local gap = require("graphicsLib.GuiApp")
 local colors = require("graphicsLib.colors")
+local procfs = require("lj2procfs.procfs")
 
 local awidth = 640;
 local aheight = 480;
+
+local meminfo = procfs.meminfo
+--print(meminfo)
+
+--convert KB to MB
+local memUsed = (meminfo.MemTotal - meminfo.MemAvailable) / 1024;
+local memAvail = meminfo.MemAvailable / 1024;
+local memTotal = meminfo.MemTotal / 1024;
+
+local xMin = 20;
+local xMax = 320;
+local offset = nil;
+
+--print(memUsed)
+function map( value, xMin, xMax )
+    local offset = ( value / awidth ) * ( xMax - xMin )
+   
+    return offset
+end
 
 local dc = nil;
 
@@ -86,21 +106,42 @@ function loop()
 	--print("loop: ", count)
 	count = count + 1;
     
-    dc:rect( 0, 0, 640, 480, colors.WHITE )
-    dc:rect( 10, 300, 50, 20, colors.BLUE )
-    --dc:circleFill( 20, 200, 5, colors.BLUE )
     
-    local seconds = os.clock()
-    local cy = 20
-    seconds = seconds * 60 
-    dc:circleFill( 20 + seconds, cy - 1, 5, colors.BLUE )
-    --dc:text( 45, 35, "OK", colors.WHITE ) 
+    --redraw the frameBuffer with black
+    dc:rect( 0, 0, 640, 480, colors.BLACK )
+    
+    --start app drawings
+    dc:text( 2, 2, "MEMORY USAGE", colors.WHITE )
+    
+    local availOffset = map(memAvail, xMin, xMax)
+    dc:rect( xMin, 170, xMin + availOffset, 20, colors.GREEN )
+    --dc:text( xMin + availOffset + 20, 130, "AVAILABLE", colors.WHITE )
 
+    local usedOffset = map(memUsed, xMin, xMax)
+    dc:rect( xMin, 210, xMin + usedOffset, 20, colors.PURPLE )
     
+    local usedString = tostring(memUsed)
+    --dc:text( xMin + usedOffset + 20, 80, "USED", colors.WHITE )    
+
+    local totalOffset = map( memTotal, xMin, xMax )
+    dc:rect( xMin, 250, xMin + totalOffset, 20, colors.BLUE )
+    
+    --incorporate time
+    local seconds = os.clock()
+    seconds = seconds * 60
+    local memWidth = 0 + seconds
+    
+    if memWidth > awidth then
+       memWidth = 0
+    end
+ 
+    --dc:circleFill( 0 + seconds, 60, 5, colors.ORANGE )
+    --dc:text( 45, 35, "OK", colors.WHITE ) 
+    --dc:rect( 0, 70, 0 + seconds, 2, colors.RED )
+   
+    dc:diagonal( 0, 70 + (memAvail / awidth), memWidth, 70 + (memAvail / awidth), colors.RED )    
+ 
     if mousePressed() then
-	    dc:rectBorder( 10, 300, 50, 20, colors.GREEN )
-        dc:rect( 10, 300, 50, 20, colors.PURPLE )
-        --dc:text( 45, 35, "OK", colors.WHITE )
     end
 end
 

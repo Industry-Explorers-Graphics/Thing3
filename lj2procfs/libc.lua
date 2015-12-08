@@ -9,41 +9,6 @@ ffi.cdef[[
 ]]
 
 ffi.cdef[[
-enum {
-	DT_UNKNOWN = 0,
-	DT_FIFO = 1,
-	DT_CHR = 2,
-	DT_DIR = 4,
-	DT_BLK = 6,
-	DT_REG = 8,
-	DT_LNK = 10,
-	DT_SOCK = 12,
-	DT_WHT = 14
-};
-]]
-
-ffi.cdef[[
-typedef struct __dirstream DIR;
-
-struct dirent
-{
-	ino_t d_ino;
-	off_t d_off;
-	unsigned short d_reclen;
-	unsigned char d_type;
-	char d_name[256];
-};
-]]
-
-ffi.cdef[[
-int            closedir(DIR *);
-DIR           *opendir(const char *);
-struct dirent *readdir(DIR *);
-int            readdir_r(DIR *__restrict, struct dirent *__restrict, struct dirent **__restrict);
-
-]]
-
-ffi.cdef[[
 char *strchr (const char *, int);
 ]]
 

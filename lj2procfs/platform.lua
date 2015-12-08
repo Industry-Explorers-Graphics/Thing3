@@ -36,8 +36,6 @@ typedef void * 			timer_t;
 typedef int 			clockid_t;
 typedef long 			clock_t;
 
-struct timeval { time_t tv_sec; suseconds_t tv_usec; };
-struct timespec { time_t tv_sec; long tv_nsec; };
 ]]
 
 ffi.cdef[[

@@ -52,4 +52,12 @@ end
 function DrawingContext.circleFill( self, x, y, radius, value )
     render.drawCircleFill( self.fb, x, y, radius, ffi.cast("pixel", value) );
 end
+
+function DrawingContext.bezier( self, x1, y1, x2, y2, x3, y3, value )
+    render.bezier( self.fb, x1, y1, x2, y2, x3, y3, ffi.cast("pixel", value) );
+end 
+
+function DrawingContext.diagonal( self, x1, y1, x2, y2, value )
+    render.drawDiagonalLine( self.fb, x1, y1, x2, y2, ffi.cast("pixel", value) );
+end
 return DrawingContext
